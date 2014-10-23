@@ -1,0 +1,4 @@
+	
+	<query id ='<%modelname%>Query'>
+			<!--<add data value='<%modelname%>Query'/>-->
+	</query>	

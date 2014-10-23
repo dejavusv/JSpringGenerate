@@ -1,0 +1,8 @@
+    
+    <definition name="<%pagename%>" <%templatetype%>="<%template%>">
+        <Generate:loop>
+        <put-attribute name="<%name%>" value="<%value%>" />
+        </Generate:loop>
+    </definition>
+
+

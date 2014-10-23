@@ -1,0 +1,533 @@
+<basiclib>
+    SET src = resource/backend/tranfer/javalib/basiclib
+    SET des = <%projectpath%>/web/WEB-INF/lib
+    ADDFOLDER
+</basiclib>
+
+<reportlib>
+    SET src = resource/backend/tranfer/javalib/ireport
+    SET des = <%projectpath%>/web/WEB-INF/lib
+    ADDFOLDER
+</reportlib>
+
+<spring3.2.7>
+    SET src = resource/backend/tranfer/javalib/SpringFramework3.2.7
+    SET des = <%projectpath%>/web/WEB-INF/lib
+    ADDFOLDER   
+</spring3.2.7>
+
+
+<template>
+    SET des = <%projectpath%>/web/WEB-INF/template
+    CREATEFOLDER       
+</template>    
+
+<templatelogin>
+    SET src = resource/frontend/file/jsp/template_login.jsp
+    SET des = <%projectpath%>/web/WEB-INF/template/template_login.jsp
+    SET map = projectname
+    MAPPING      
+</templatelogin>    
+
+<templatemain>
+    SET src = resource/frontend/file/jsp/template_main.jsp
+    SET des = <%projectpath%>/web/WEB-INF/template/template_main.jsp
+    SET map = projectname
+    MAPPING     
+</templatemain>    
+    
+<js>
+    SET src = resource/frontend/tranfer/weblib/js
+    SET des = <%projectpath%>/web/js
+    ADDFOLDER       
+</js>
+
+<header>
+    SET src = resource/frontend/file/jsp/header.jsp
+    SET des = <%projectpath%>/web/WEB-INF/template/header.jsp
+    SET map = url,projectname
+    MAPPING
+</header>
+
+<sidebar>
+    SET src = resource/frontend/file/jsp/sidebar.jsp
+    SET des = <%projectpath%>/web/WEB-INF/template/sidebar.jsp
+    SET map = url
+    MAPPING
+</sidebar>
+
+<footer>
+    SET src = resource/frontend/file/jsp/footer.jsp
+    SET des = <%projectpath%>/web/WEB-INF/template/footer.jsp
+    SET map = url
+    MAPPING
+</footer>
+       
+<css>
+    SET src = resource/frontend/tranfer/weblib/css
+    SET des = <%projectpath%>/web/css
+    ADDFOLDER
+</css>
+
+<img>
+    SET src = resource/frontend/tranfer/weblib/img
+    SET des = <%projectpath%>/web/img
+    ADDFOLDER       
+</img>
+
+<projectcss>
+    SET src = resource/frontend/file/css/project_css.css
+    SET des = <%projectpath%>/web/css/<%projectname%>.css
+    ADDFILE
+</projectcss>
+
+<tiles>
+    SET src = resource/frontend/tranfer/tiles
+    SET des = <%projectpath%>/web/WEB-INF/tiles
+    ADDFOLDER
+</tiles>
+
+<spring-bean>
+    SET src = resource/backend/file/springconfig/spring-bean.xml
+    SET des = <%projectpath%>/web/WEB-INF/<%projectname%>-bean.xml
+    SET map = packagename
+    MAPPING   
+</spring-bean>
+
+<spring-connect>
+    SET src = resource/backend/file/springconfig/spring-connect.xml
+    SET des = <%projectpath%>/web/WEB-INF/<%projectname%>-connection.xml
+    SET map = projectname,packagename,username,password,connectionString,driverName
+    MAPPING   
+</spring-connect>
+
+<spring-query>
+    SET src = resource/backend/file/springconfig/spring-query.xml
+    SET des = <%projectpath%>/web/WEB-INF/<%projectname%>-query.xml
+    SET map = projectname,packagename
+    MAPPING   
+</spring-query>
+
+ <jasper>
+    SET src = resource/backend/file/springconfig/jasper-views.xml
+    SET des = <%projectpath%>/web/WEB-INF/jasper-views.xml
+    ADDFILE    
+ </jasper>  
+
+ <springSQL>
+    SET src = resource/backend/file/springconfig/spring_sql.xml
+    SET des = <%projectpath%>/web/WEB-INF/<%projectname%>-sql.xml
+    SET map = projectname
+    MAPPING    
+ </springSQL>    
+ 
+<dispatcher-servlet>
+    SET src = resource/backend/file/springconfig/dispatcher-servlet.xml
+    SET des = <%projectpath%>/web/WEB-INF/dispatcher-servlet.xml
+    SET map = url,packagename
+    MAPPING       
+</dispatcher-servlet>     
+         
+<web>
+    SET src = resource/backend/file/webconfig/web.xml
+    SET des = <%projectpath%>/web/WEB-INF/web.xml
+    SET map = url,packagename,projectname
+    MAPPING     
+</web>
+            
+<redirect>
+    SET src = resource/frontend/file/jsp/redirect.jsp
+    SET des = <%projectpath%>/web/redirect.jsp
+    SET map = url
+    MAPPING                            
+</redirect>                                              
+          
+                                    
+<common>
+    SET des = <%projectpath%><%packagepath%>/<%packagename%>/common
+    CREATEFOLDER
+</common>
+
+<controller>
+    SET des = <%projectpath%><%packagepath%>/<%packagename%>/controller
+    CREATEFOLDER
+</controller>
+
+<report>
+    SET des = <%projectpath%><%packagepath%>/<%packagename%>/controller/report
+    CREATEFOLDER
+</report>
+
+<bean>
+    SET des = <%projectpath%><%packagepath%>/<%packagename%>/datalayer/bean
+    CREATEFOLDER
+</bean>
+
+<entity>
+    SET des = <%projectpath%><%packagepath%>/<%packagename%>/datalayer/entity
+    CREATEFOLDER
+</entity>
+
+<query>
+    SET des = <%projectpath%><%packagepath%>/<%packagename%>/datalayer/query
+    CREATEFOLDER
+</query>
+
+<service>
+    SET des = <%projectpath%><%packagepath%>/<%packagename%>/datalayer/service
+    CREATEFOLDER
+</service>
+
+<filterFolder>
+    SET des = <%projectpath%><%packagepath%>/<%packagename%>/filter
+    CREATEFOLDER
+</filterFolder>
+
+<master>
+    SET des = <%projectpath%><%packagepath%>/<%packagename%>/master/controller
+    CREATEFOLDER
+</master>
+
+<servlet>
+    SET des = <%projectpath%><%packagepath%>/<%packagename%>/servlet
+    CREATEFOLDER
+</servlet>
+
+<Ajaxservlet>
+    SET des = <%projectpath%><%packagepath%>/<%packagename%>/servlet/ajax
+    CREATEFOLDER
+</Ajaxservlet>
+
+<Ajaxservice>
+    SET des = <%projectpath%><%packagepath%>/<%packagename%>/datalayer/ajax/service
+    CREATEFOLDER
+</Ajaxservice>
+
+<AbstractBeanPackage>
+    SET des = <%projectpath%><%packagepath%>/<%packagename%>/common/bean
+    CREATEFOLDER
+</AbstractBeanPackage>
+
+<ViewPackage>
+    SET des = <%projectpath%><%packagepath%>/<%packagename%>/common/view
+    CREATEFOLDER
+</ViewPackage>
+
+<AjaxCombopackage>
+    SET des = <%projectpath%><%packagepath%>/<%packagename%>/servlet/combo
+    CREATEFOLDER
+</AjaxCombopackage>
+      
+<ProjectSQL>  
+    SET src = resource/backend/file/java/common/ProjectSQL.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/common/<%projectname%>SQL.java
+    SET map = packagename,projectname
+    MAPPING        
+</ProjectSQL> 
+	  
+<maincontroller>  
+    SET src = resource/backend/file/java/Controller/MainController.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/master/controller/<%projectname%>Controller.java
+    SET map = packagename,projectname
+    MAPPING        
+</maincontroller> 
+
+<Filter>  
+    SET src = resource/backend/file/java/Filter/SessionFilter.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/filter/SessionFilter.java
+    SET map = packagename,projectname,url
+    MAPPING        
+</Filter> 
+
+<IndexController>
+    SET src = resource/backend/file/java/LoginLogout/IndexController.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/controller/IndexController.java
+    SET map = packagename,projectname,url
+    MAPPING       
+</IndexController>
+
+<LoginController>
+    SET src = resource/backend/file/java/LoginLogout/LoginController.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/controller/LoginController.java
+    SET map = packagename,projectname,url,authenuser,authenpass
+    MAPPING       
+</LoginController>
+
+<LogOutController>
+    SET src = resource/backend/file/java/LoginLogout/LogOutController.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/controller/LogOutController.java
+    SET map = packagename,projectname,url
+    MAPPING       
+</LogOutController>
+
+
+<SystemUser>
+    SET src = resource/backend/file/java/datalayer/entity/SystemUser.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/datalayer/entity/SystemUser.java
+    SET map = packagename,projectname
+    MAPPING       
+</SystemUser>
+
+<jspFolder>
+    SET des = <%projectpath%>/web/WEB-INF/jsp
+    CREATEFOLDER   
+</jspFolder>
+
+<indexjsp>
+    SET src = resource/frontend/file/jsp/index.jsp
+    SET des = <%projectpath%>/web/WEB-INF/jsp/index.jsp
+    ADDFILE   
+</indexjsp>
+
+<loginjsp>
+    SET src = resource/frontend/file/jsp/login.jsp
+    SET des = <%projectpath%>/web/WEB-INF/jsp/login.jsp
+    SET map = url
+    MAPPING       
+</loginjsp>
+
+
+<CreateModel>
+    SET src = resource/backend/file/java/datalayer/entity/entity.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/datalayer/entity/<%modelname%>.java
+    SET map = packagename,modelname
+    MAPPING       
+</CreateModel>
+
+<AddAttibute>
+	SET src = resource/backend/template/model.template
+    SET des = <%projectpath%>/src/java/<%packagename%>/datalayer/entity/<%modelname%>.java
+	SET map = typename,attibutename
+	SET tag = //generate variable
+	ADDDATA
+</AddAttibute>
+
+<GETSET>
+	SET src = resource/backend/template/model_getset.template
+    SET des = <%projectpath%>/src/java/<%packagename%>/datalayer/entity/<%modelname%>.java
+	SET map = typename,attibutename
+	SET tag = //generate code
+	ADDDATA
+</GETSET>
+
+<AddSpringBean>
+	SET src = resource/backend/template/bean.template
+    SET des = <%projectpath%>/web/WEB-INF/<%projectname%>-bean.xml
+	SET map = modelname,packagename
+	SET tag = <!--<add data>-->
+	ADDDATA
+</AddSpringBean>
+
+ <AddSpringQuery>
+	SET src = resource/backend/template/query.template
+    SET des = <%projectpath%>/web/WEB-INF/<%projectname%>-query.xml
+	SET map = modelname,packagename
+	SET tag = <!--<add data>-->
+	ADDDATA
+</AddSpringQuery>    
+
+<CreateBean>
+    SET src = resource/backend/file/java/datalayer/bean/Bean.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/datalayer/bean/<%modelname%>Bean.java
+    SET map = packagename,modelname,projectname,titlename
+    MAPPING       
+</CreateBean>  
+
+<CreateQuery>
+    SET src = resource/backend/file/java/datalayer/query/Query_SpringJDBC.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/datalayer/query/<%modelname%>Query.java
+    SET map = packagename,modelname,projectname
+    MAPPING       
+</CreateQuery> 
+
+<CreateService>
+    SET src = resource/backend/file/java/datalayer/service/Service.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/datalayer/service/<%modelname%>Service.java
+    SET map = packagename,modelname
+    MAPPING       
+</CreateService> 
+
+<CreateAjaxService>
+    SET src = resource/backend/file/java/datalayer/ajax/service/AbstractAJAXServices.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/datalayer/ajax/service/AbstractAJAXServices.java
+    SET map = packagename
+    MAPPING       
+</CreateAjaxService> 
+
+<CreateAbstractAjaxServlet>
+    SET src = resource/backend/file/java/datalayer/ajax/service/AbstractAJAXServlet.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/datalayer/ajax/service/AbstractAJAXServlet.java
+    SET map = packagename
+    MAPPING       
+</CreateAbstractAjaxServlet> 
+
+<CreateAbstractAJAXServletcombo>
+    SET src = resource/backend/file/java/servlet/combo/AbstractAJAXServlet.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/servlet/combo/AbstractAJAXServlet.java
+    SET map = packagename
+    MAPPING       
+</CreateAbstractAJAXServletcombo> 
+
+
+<CreateAjaxServlet>
+    SET src = resource/backend/file/java/servlet/ajax/AJAXServlet.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/servlet/ajax/AJAXServlet.java
+    SET map = packagename
+    MAPPING       
+</CreateAjaxServlet> 
+
+<CreateAjaxPageServlet>
+    SET src = resource/backend/file/java/servlet/ajax/TemplateServlet.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/servlet/ajax/<%pagename%>Servlet.java
+    SET map = packagename,pagename
+    MAPPING       
+</CreateAjaxPageServlet> 
+
+
+
+<CreateAbstractBean>
+    SET src = resource/backend/file/java/common/bean/AbstractBean.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/common/bean/AbstractBean.java
+    SET map = packagename
+    MAPPING       
+</CreateAbstractBean> 
+
+<CreateSelectOption>
+    SET src = resource/backend/file/java/common/view/SelectOption.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/common/view/SelectOption.java
+    SET map = packagename
+    MAPPING       
+</CreateSelectOption> 
+
+<CreateAJAXBean>
+    SET src = resource/backend/file/java/datalayer/bean/AJAXBean.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/datalayer/bean/AJAXBean.java
+    SET map = packagename
+    MAPPING  
+</CreateAJAXBean>
+
+<AddTagBeanRef>
+	SET src = resource/backend/template/BeanRef.template
+    SET des = <%projectpath%>/web/WEB-INF/<%projecyname%>-bean.xml
+	SET map = refname
+	SET tag = <!--<RefBean>-->
+	ADDDATA
+</AddTagBeanRef>
+
+<AddTagAJAXServlet>
+	SET src = resource/backend/template/AJAXServlet.template
+    SET des = <%projectpath%>/web/WEB-INF/<%projecyname%>-bean.xml
+	SET map = pagename
+	SET tag = <!--<AJAX bean>-->
+	ADDDATA 
+</AddTagAJAXServlet>
+
+<AddAjaxJS>
+	SET src = resource/frontend/template/AjaxJS.template
+    SET des = <%projectpath%>/web/js/<%JSpagename%>.js
+	SET map = Servletname,outputtype,servletid
+	SET tag = Last Page
+	ADDDATA 
+</AddAjaxJS>
+
+<DeclareJDBCTag>
+	SET src = resource/backend/template/JDBCFunction.template
+    SET des = <%projectpath%>/src/java/<%packagename%>/datalayer/query/<%modelname%>Query.java
+	SET map = tagname,tagvalue
+	SET tag = //generate variable
+	ADDDATA
+</DeclareJDBCTag>  
+
+<AddJDBCSelect>
+	SET src = resource/backend/template/JDBCFunction_select.template
+    SET des = <%projectpath%>/src/java/<%packagename%>/datalayer/query/<%modelname%>Query.java
+	SET map = returntype,functionname,titlename,tagname,fieldname,modelname
+	SET tag = //generate code
+	ADDDATA
+</AddJDBCSelect>  
+
+<AddJDBCADU>
+	SET src = resource/backend/template/JDBCFunction_adu.template
+    SET des = <%projectpath%>/src/java/<%packagename%>/datalayer/query/<%modelname%>Query.java
+	SET map = returntype,functionname,titlename,tagname,fieldname,modelname
+	SET tag = //generate code
+	ADDDATA
+</AddJDBCADU>  
+
+<AddServiceInterface>
+	SET src = resource/backend/template/serviceDeclare.template
+    SET des = <%projectpath%>/src/java/<%packagename%>/datalayer/service/<%modelname%>Service.java
+	SET map = modelname,functionname,titlename,returntype
+	SET tag = //generate variable
+	ADDDATA
+</AddServiceInterface> 
+
+<AddBeanimplements>
+	SET src = resource/backend/template/beanImplement.template
+    SET des = <%projectpath%>/src/java/<%packagename%>/datalayer/bean/<%modelname%>Bean.java
+	SET map = modelname,functionname,titlename,returntype
+	SET tag = //generate code
+	ADDDATA
+</AddBeanimplements> 
+
+<GenHeadQuery>
+	SET src = resource/backend/template/headerQuery.template
+    SET des = <%projectpath%>/web/WEB-INF/<%projectname%>-sql.xml
+	SET map = modelname
+	SET tag = <!--<add data>-->
+	ADDDATA
+</GenHeadQuery>    
+
+<GenValueQuery>
+	SET src = resource/backend/template/commandQuery.template
+    SET des = <%projectpath%>/web/WEB-INF/<%projectname%>-sql.xml
+	SET map = query,tagvalue
+	SET tag = <!--<add data value='<%modelname%>Query'/>-->
+	ADDDATA
+</GenValueQuery>   
+
+<CreateController>
+    SET src = resource/backend/file/java/Controller/Controller.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/controller/<%pagename%>Controller.java
+    SET map = packagename,projectname,pagename,url
+    MAPPING       
+</CreateController> 
+
+<CreateJSP>
+    SET src = resource/frontend/file/jsp/main.jsp
+    SET des = <%projectpath%>/web/WEB-INF/jsp/<%pagename%>.jsp
+    SET map = pagename
+    MAPPING       
+</CreateJSP> 
+
+<AddTiles>
+	SET src = resource/backend/template/Tiles.template
+    SET des = <%projectpath%>/web/WEB-INF/tiles/tiles-definitions.xml
+	SET map = pagename,templatetype,template,name,value
+	SET tag = <!--<add data>-->
+	ADDDATA
+</AddTiles>    
+
+<AddurlMapping>
+	SET src = resource/backend/template/mappingurl.template
+    SET des = <%projectpath%>/web/WEB-INF/dispatcher-servlet.xml
+	SET map = pagename,url
+	SET tag = <!-- add mapping url -->
+	ADDDATA
+</AddurlMapping>   
+
+<AddBeanIDController>
+	SET src = resource/backend/template/beanid.template
+    SET des = <%projectpath%>/web/WEB-INF/dispatcher-servlet.xml
+	SET map = pagename,packagename
+	SET tag = <!-- add bean id controller -->
+	ADDDATA
+</AddBeanIDController>   
+
+<AddController>
+    SET src = resource/backend/file/java/Controller/Controller.java
+    SET des = <%projectpath%>/src/java/<%packagename%>/controller/<%pagename%>Controller.java
+    SET map = packagename,projectname,url,pagename
+    MAPPING       
+</AddController>
+

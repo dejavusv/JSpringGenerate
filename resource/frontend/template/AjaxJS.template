@@ -1,0 +1,7 @@
+    
+function reloadAjaxAction(id) {
+    var servletName = '<%Servletname%>Servlet';
+    var servicesName = 'AJAXBean';
+    var data = document.getElementById('parameterID').value;
+    reloadAjax(id, null,'<%outputtype%>',servletName,servicesName,data<%servletid%>);
+}

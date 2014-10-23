@@ -1,0 +1,5 @@
+	
+    @Override
+    public <%returntype%> <%functionname%>(<%modelname%> <%titlename%>) {
+        return get<%modelname%>Query().<%functionname%>(<%titlename%>);
+    }    

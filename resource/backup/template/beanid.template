@@ -1,0 +1,5 @@
+    
+    <bean id="<%pagename%>Controller" class="<%packagename%>.controller.<%pagename%>Controller">
+        
+    </bean>
+

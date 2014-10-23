@@ -1,0 +1,10 @@
+
+    public <%returntype%> <%functionname%>(<%modelname%> <%titlename%>) {     
+        <%returntype%> result  = getJdbcTemplate().update(getQuery(<%tagname%>),
+					     new Object[] {  
+						    <Generate:loop>  SUB_LAST(,)
+                                <%titlename%>.get<%fieldname%>(),
+						    </Generate:loop>	
+                         });
+        return result;
+    }

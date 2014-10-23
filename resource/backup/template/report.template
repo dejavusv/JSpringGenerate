@@ -1,0 +1,4 @@
+    <bean id="<%beanid%>"
+       class="org.springframework.web.servlet.view.jasperreports.<%reporttype%>">
+       <property name="url" value="<%pathfile%>"/>
+    </bean>

@@ -1,0 +1,4 @@
+    
+	<bean id="<%modelname%>Bean" class="<%packagename%>.datalayer.bean.<%modelname%>Bean">
+	   <property name="<%modelname%>Query" ref="<%modelname%>Query" />
+    </bean>

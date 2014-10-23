@@ -1,0 +1,10 @@
+   <Generate:loop>
+    public <%typename%> get<%attibutename%>() {
+        return <%attibutename%>;
+    }
+
+    public void set<%attibutename%>(<%typename%> <%attibutename%>) {
+        this.<%attibutename%> = <%attibutename%>;
+    }
+   </Generate:loop>
+

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/<%projectname%>-connection.xml,/WEB-INF/<%projectname%>-bean.xml,/WEB-INF/<%projectname%>-query.xml</param-value>
+    </context-param>
+    <context-param>
+        <param-name>
+            javax.servlet.jsp.jstl.fmt.locale
+        </param-name>
+        <param-value>
+            en_US
+        </param-value>
+    </context-param>
+
+    
+    <filter-mapping>
+        <filter-name>sessionfiler</filter-name>
+        <url-pattern>*.<%url%></url-pattern>
+    </filter-mapping>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <servlet>
+        <servlet-name>spring</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>WEB-INF/dispatcher-servlet.xml</param-value>
+        </init-param>
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>spring</servlet-name>
+        <url-pattern>*.<%url%></url-pattern>
+    </servlet-mapping>
+    <filter>
+        <description>Filter</description>
+        <filter-name>sessionfiler</filter-name>
+        <filter-class><%packagename%>.filter.SessionFilter</filter-class>
+    </filter>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>redirect.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>

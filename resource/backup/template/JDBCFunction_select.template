@@ -1,0 +1,12 @@
+
+    public <%returntype%> <%functionname%>(<%modelname%> <%titlename%>) {     
+        <%returntype%> result  = getJdbcTemplate().query(getQuery(<%tagname%>),
+             new Object[]{  
+						    <Generate:loop>  SUB_LAST(,)
+                                <%titlename%>.get<%fieldname%>(),
+						    </Generate:loop>	
+                         },new BeanPropertyRowMapper(<%modelname%>.class));
+        return result;
+    }
+
+

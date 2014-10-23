@@ -1,0 +1,6 @@
+	
+	<bean id="<%modelname%>Query"
+		  class="<%packagename%>.datalayer.query.<%modelname%>Query">
+		<constructor-arg value="<%modelname%>Query"/>
+        <constructor-arg ref="dataSource" />
+	</bean>
