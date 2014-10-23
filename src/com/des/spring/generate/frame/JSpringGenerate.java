@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package com.des.spring.generate.frame;
-//test pull
+//test pull data
 import com.des.generate.GenerateFile;
 import com.des.generate.master.MasterTag;
 import java.io.File;
