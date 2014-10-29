@@ -30,6 +30,7 @@ public class SetupDB extends javax.swing.JFrame {
     private Project mainFrame;
     private static final String Mysql_Name = "Mysql";
     private static final String Sqlserver_Name = "SqlServer";
+    private static final String Oracle_Name = "Oracle";
     public Project getMainFrame() {
         return mainFrame;
     }
@@ -245,10 +246,13 @@ public class SetupDB extends javax.swing.JFrame {
         String type = listDBSel.getSelectedItem().toString();
         if (type.equalsIgnoreCase("SqlServer")) {
             DriverNameTxt.setText("net.sourceforge.jtds.jdbc.Driver");
+            portTxt.setText("1433");
         } else if (type.equalsIgnoreCase("MySQL")) {
             DriverNameTxt.setText("com.mysql.jdbc.Driver");
+            portTxt.setText("3306");
         } else if (type.equalsIgnoreCase("Oracle")) {
             DriverNameTxt.setText("oracle.jdbc.driver.OracleDriver");
+            portTxt.setText("1521");
         } else {
             DriverNameTxt.setText("");
         }
@@ -372,10 +376,14 @@ public class SetupDB extends javax.swing.JFrame {
     public void setConnection(String server, String DBNAME,String user,String pass,String port) {
         String connection = "";  
         if (listDBSel.getSelectedItem().toString().equalsIgnoreCase(Mysql_Name)) {
-           connection = "jdbc:mysql://" + server + "/" + DBNAME + "?user=" + user + "&password=" + pass;
+           connection = "jdbc:mysql://" + server+":"+port+ "/" + DBNAME;
         }else if (listDBSel.getSelectedItem().toString().equalsIgnoreCase(Sqlserver_Name)) {
            connection = "jdbc:jtds:sqlserver://" + server + ":" + port + "/" + DBNAME + ";user=" + user + ";password=" + pass;
-        }      
+        }else if (listDBSel.getSelectedItem().toString().equalsIgnoreCase(Oracle_Name)) {
+           connection = "jdbc:oracle:thin:@" + server + ":" + port + ":" + DBNAME;
+        }    
+        //jdbc:oracle:thin:@localhost:1521:XE
+        //jdbc:mysql://localhost:3306/etl
         connectionTxt.setText(connection);
     }
     /**

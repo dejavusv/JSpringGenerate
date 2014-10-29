@@ -44,7 +44,7 @@ public class SetupProject extends javax.swing.JFrame {
         usernameTxt.disable();
         passwordTxt.disable();
         roleTxt.disable();
-        
+
     }
 
     /**
@@ -401,17 +401,19 @@ public class SetupProject extends javax.swing.JFrame {
         // TODO add your handling code here:
         Session sessionMap = Session.Getinstance();
         Map<String, Object> parameter = sessionMap.getMap();
+        parameter.put("projectpath", pathTxt.getText());
+        parameter.put("projectname", nameTxt.getText());
+        parameter.put("packagename", packageTxt.getText());
+        parameter.put("packagepath", "/src/java");
+        parameter.put("authenuser", usernameTxt.getText());
+        parameter.put("authenpass", passwordTxt.getText());
+        parameter.put("url", urlTxt.getText());
+        /*
         if (!pathTxt.getText().equalsIgnoreCase("") && !nameTxt.getText().equalsIgnoreCase("") && !packageTxt.getText().equalsIgnoreCase("") && !usernameTxt.getText().equalsIgnoreCase("") && !passwordTxt.getText().equalsIgnoreCase("") && !urlTxt.getText().equalsIgnoreCase("")) {
-            parameter.put("projectpath", pathTxt.getText());
-            parameter.put("projectname", nameTxt.getText());
-            parameter.put("packagename", packageTxt.getText());
-            parameter.put("packagepath", "/src/java");
-            parameter.put("authenuser", usernameTxt.getText());
-            parameter.put("authenpass", passwordTxt.getText());
-            parameter.put("url", urlTxt.getText());
-        }else{
+
+        } else {
             JOptionPane.showMessageDialog(this, "please fill up all field");
-        }
+        }*/
 
         //setupdb.setMap(map);
         setupdb.setMainFrame(this.getMainFrame());
@@ -429,8 +431,8 @@ public class SetupProject extends javax.swing.JFrame {
         checkAuthenRadio();
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
-    public void checkAuthenRadio(){
-        if(jRadioButton1.isSelected()){
+    public void checkAuthenRadio() {
+        if (jRadioButton1.isSelected()) {
             userpassQueryTxt.disable();
             roleQueryTxt.disable();
             usernameTxt.enable();
@@ -441,8 +443,8 @@ public class SetupProject extends javax.swing.JFrame {
             roleTxt.setBackground(Color.WHITE);
             userpassQueryTxt.setBackground(Color.darkGray);
             roleQueryTxt.setBackground(Color.darkGray);
-            
-        }else if(jRadioButton2.isSelected()){
+
+        } else if (jRadioButton2.isSelected()) {
             usernameTxt.disable();
             passwordTxt.disable();
             roleTxt.disable();
@@ -455,6 +457,7 @@ public class SetupProject extends javax.swing.JFrame {
             roleQueryTxt.setBackground(Color.WHITE);
         }
     }
+
     /**
      * @param args the command line arguments
      */
