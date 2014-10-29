@@ -35,12 +35,13 @@
 
 											<div class="space-6"></div>
 
-											<form  method="post" name="formApplication" id="formApplication" method="post" action="login.<%url%>">
+											<form  method="post" name="formApplication" id="formApplication" method="post" action="<c:url value='/j_spring_security_check' />"">
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
 															<input type="text" name="username" class="form-control" placeholder="Username" />
-                                                            <input type="hidden" name="action" id="action" class="form-control"/>                                               
+                                                            <input type="hidden" name="action" id="action" class="form-control"/>     
+                                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />															
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>

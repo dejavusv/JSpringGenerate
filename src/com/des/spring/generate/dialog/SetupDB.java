@@ -260,11 +260,19 @@ public class SetupDB extends javax.swing.JFrame {
     }//GEN-LAST:event_listDBSelActionPerformed
 
     private void checkButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButActionPerformed
-        
+        String type = listDBSel.getSelectedItem().toString();
         try
         {
+            System.out.println("DriverNameTxt.getText() : "+DriverNameTxt.getText());
+            
             Class.forName(DriverNameTxt.getText()); //specify the jtds driver
-            Connection conn = DriverManager.getConnection(connectionTxt.getText()); //establish connection     
+            System.out.println("connectionTxt.getText() : "+connectionTxt.getText());
+            if (type.equalsIgnoreCase("SqlServer")) {
+                Connection conn = DriverManager.getConnection(connectionTxt.getText()); //establish connection     
+            }else{
+                Connection conn = DriverManager.getConnection(connectionTxt.getText(),userTxt.getText(),passwordTxt.getText()); //establish connection     
+            }
+            
             JOptionPane.showMessageDialog(this, "connect success");
         }
         catch (Exception e)

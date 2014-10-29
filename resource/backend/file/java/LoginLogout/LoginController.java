@@ -10,7 +10,12 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
-
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestWrapper;
+import java.util.Collection;
+import java.util.Iterator;
 /**
  *
  * @author Surachai
@@ -20,39 +25,34 @@ public class LoginController extends <%projectname%>Controller{
     private static final ModelAndView INDEX = new ModelAndView(new RedirectView("index.<%url%>", true));
     private static final ModelAndView LOG_IN = new ModelAndView("login");
 
-	@Override
+    @Override
     protected ModelAndView process(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-        String action = request.getParameter("action");
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        if (action != null) {
-            if (action.equalsIgnoreCase("login")) {
-				SystemUser user = new SystemUser();
-                user.setUserId(username);
-                user.setPwd(password);
-                String User = null;
-                if((user.getUserId() != null) && (user.getUserId().equalsIgnoreCase("<%authenuser%>"))){
-                    if((user.getPwd()!= null) && (user.getPwd().equalsIgnoreCase("<%authenpass%>"))){
-                        User = "<%authenuser%>";
-                    }
-                }
+        ModelAndView authen = new ModelAndView("login");
+        String error = request.getParameter("error");
+        
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName(); //get logged in username
 
-                session.setAttribute("USER", User);
-                if (session.getAttribute("USER") != null) {
-                    log.info("Login Successful with "+session.getAttribute("USER").toString());
-                    return INDEX;
-                }else{
-                    request.setAttribute("ResultLogin", "Login fail!!");
-                    log.info("Login fail!!");
-                    return LOG_IN;
-                }
-            }
-        }
-        if(session.getAttribute("USER")!=null){
+        session.setAttribute("USER", name);
+        if ((session.getAttribute("USER") != null) && (!session.getAttribute("USER").toString().equalsIgnoreCase("anonymousUser"))) {
+            log.info("Login Successful with " + session.getAttribute("USER").toString());
             return INDEX;
-        }else{
+        } else {
+            request.setAttribute("ResultLogin", "Login fail!!");
+            log.info("Login fail!!");
             return LOG_IN;
         }
+
+    }
+
+    public String getUserDetails() {
+            
+            Collection<? extends GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+            Iterator<? extends GrantedAuthority> data = authorities.iterator();
+            while(data.hasNext()){
+                return (data.next().getAuthority());
+            }
+            return "empty";
     }
 
         

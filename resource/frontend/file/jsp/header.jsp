@@ -8,7 +8,16 @@
                 } catch (e) {
                 }
             </script>
-			<c:set var="USER" value="${sessionScope['USER']}" />
+			<c:set var="USER" value="${sessionScope['USER']}" />			
+            <!-- csrt for log out-->
+            <form action="/Template/j_spring_security_logout" method="post" id="logoutForm">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+            </form>
+            <script>
+                function formSubmit() {             
+                    document.getElementById("logoutForm").submit();
+                }
+            </script>
             <div class="navbar-container" id="navbar-container">
                 <!-- #section:basics/sidebar.mobile.toggle -->
                 <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler">
@@ -20,6 +29,7 @@
 
                     <span class="icon-bar"></span>
                 </button>
+				
 
                 <!-- /section:basics/sidebar.mobile.toggle -->
                 <div class="navbar-header pull-left">
@@ -66,10 +76,9 @@
                                 <li class="divider"></li>
 
                                 <li>
-                                    <a href="logout.<%url%>">
-                                        <i class="ace-icon fa fa-power-off"></i>
-                                        Logout
-                                    </a>
+                                    <c:if test="${pageContext.request.userPrincipal.name != null}">
+                                        <a  href="javascript:formSubmit()" style="color: #000"><i class="ace-icon fa fa-power-off"></i> Logout</a>
+                                    </c:if>
                                 </li>
                             </ul>
                         </li>

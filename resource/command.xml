@@ -108,6 +108,13 @@
     MAPPING   
 </spring-query>
 
+<spring-security>
+    SET src = resource/backend/file/springconfig/spring-security.xml
+    SET des = <%projectpath%>/web/WEB-INF/<%projectname%>-security.xml
+    SET map = url
+    MAPPING   
+</spring-security>
+
  <jasper>
     SET src = resource/backend/file/springconfig/jasper-views.xml
     SET des = <%projectpath%>/web/WEB-INF/jasper-views.xml

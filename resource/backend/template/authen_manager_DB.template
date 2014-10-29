@@ -1,0 +1,10 @@
+	
+	<authentication-manager>
+	    <authentication-provider>
+		    <jdbc-user-service data-source-ref="dataSource"
+		       users-by-username-query=
+		          "<%usernamequery%>"
+		       authorities-by-username-query=
+		          "<%rolequery%>" />
+	    </authentication-provider>
+	</authentication-manager>

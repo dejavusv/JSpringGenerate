@@ -66,6 +66,7 @@ public class JSpringGenerate {
         command.add("spring-bean");
         command.add("spring-connect");
         command.add("spring-query");
+        command.add("spring-security");
         command.add("jasper");
         command.add("springSQL");
         command.add("dispatcher-servlet");
