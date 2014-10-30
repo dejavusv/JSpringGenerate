@@ -2,7 +2,9 @@
         <authentication-manager>
 		    <authentication-provider>
 		        <user-service>
+					<Generate:loop>
 			         <user name="<%userauthen%>" password="<%passauthen%>"  authorities="<%rolename%>" />
+					</Generate:loop>
 		        </user-service>
 		    </authentication-provider>
         </authentication-manager>

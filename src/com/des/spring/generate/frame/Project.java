@@ -3,15 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.des.spring.generate.frame;
 
 import com.des.session.Session;
 import com.des.spring.generate.dialog.SetupDB;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -20,6 +23,7 @@ import javax.swing.JTextField;
 public class Project extends javax.swing.JPanel {
 
     private JSpringGenerate Generate;
+
     /**
      * Creates new form Project
      */
@@ -45,6 +49,7 @@ public class Project extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Authengroup = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         ProjectNameTxt = new javax.swing.JTextField();
@@ -65,14 +70,17 @@ public class Project extends javax.swing.JPanel {
         DriverTxt = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        AuthenTable = new javax.swing.JTable();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         userpassQueryTxt = new javax.swing.JTextField();
         passQueryTxt = new javax.swing.JTextField();
+        DBAuthenRadio = new javax.swing.JRadioButton();
+        XMLAuthenRadio = new javax.swing.JRadioButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         setup = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -187,8 +195,9 @@ public class Project extends javax.swing.JPanel {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 255), null), "Setup authen"));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        AuthenTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
@@ -206,27 +215,30 @@ public class Project extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(0).setHeaderValue("username");
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setHeaderValue("password");
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setHeaderValue("role");
+        jScrollPane1.setViewportView(AuthenTable);
+        if (AuthenTable.getColumnModel().getColumnCount() > 0) {
+            AuthenTable.getColumnModel().getColumn(0).setResizable(false);
+            AuthenTable.getColumnModel().getColumn(1).setResizable(false);
+            AuthenTable.getColumnModel().getColumn(2).setResizable(false);
         }
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel12.setText("XML");
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel13.setText("DB");
 
         jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 255), null));
 
         jLabel9.setText("user/pass");
 
         jLabel10.setText("role");
+
+        userpassQueryTxt.setText("select username,password, enabled from users where username=?");
+
+        passQueryTxt.setText("select username,role from user_roles where username =?  ");
+        passQueryTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passQueryTxtActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -235,27 +247,39 @@ public class Project extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(userpassQueryTxt)
-                    .addComponent(passQueryTxt))
+                    .addComponent(passQueryTxt)
+                    .addComponent(userpassQueryTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 356, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(userpassQueryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(passQueryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(userpassQueryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(passQueryTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
+
+        Authengroup.add(DBAuthenRadio);
+        DBAuthenRadio.setText("DB");
+
+        Authengroup.add(XMLAuthenRadio);
+        XMLAuthenRadio.setText("XML");
+
+        jLabel11.setText("Authen");
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel13.setText("DB");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -265,27 +289,38 @@ public class Project extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addGap(13, 13, 13)
+                        .addComponent(DBAuthenRadio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(XMLAuthenRadio)))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel13)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DBAuthenRadio)
+                    .addComponent(XMLAuthenRadio)
+                    .addComponent(jLabel11))
+                .addGap(18, 24, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(20, 20, 20))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(12, 12, 12))
         );
 
         setup.setText("Setup project");
@@ -306,19 +341,17 @@ public class Project extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(setup, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,6 +376,12 @@ public class Project extends javax.swing.JPanel {
         Session sessionMap = Session.Getinstance();
         Map<String, Object> parameter = sessionMap.getMap();
         try {
+            if (!DBAuthenRadio.isSelected() && !XMLAuthenRadio.isSelected()) {
+                int result = JOptionPane.showConfirmDialog(this, "are you confirm to setup project without Authen method?"
+                        + "/n (if not set it.you cannot run project.)");
+                System.out.println("result :" + result);
+            }
+
             Generate.setupproject(parameter);
             PackageNameTxt.setText(parameter.get("packagename").toString());
             ProjectNameTxt.setText(parameter.get("projectname").toString());
@@ -352,6 +391,29 @@ public class Project extends javax.swing.JPanel {
             DriverTxt.setText(parameter.get("driverName").toString());
             passTxt.setText(parameter.get("password").toString());
             connectTxt.setText(parameter.get("connectionString").toString());
+
+            if (DBAuthenRadio.isSelected()) {
+                parameter.put("usernamequery", userpassQueryTxt.getText());
+                parameter.put("rolequery", passQueryTxt.getText());
+                Generate.GenerateFromTag("AnthenDB", parameter, true);
+            } else if (XMLAuthenRadio.isSelected()) {
+                // AuthenTable.get
+                List<String> usernameList = new LinkedList<String>();
+                List<String> passwordList = new LinkedList<String>();
+                List<String> roleList = new LinkedList<String>();
+                TableModel dataList = AuthenTable.getModel();
+                
+                for (int i = 0; i < dataList.getRowCount(); i++) {  
+                    if(dataList.getValueAt(i, 0) == null)break;
+                    usernameList.add(dataList.getValueAt(i, 0).toString());
+                    passwordList.add(dataList.getValueAt(i, 1).toString());
+                    roleList.add(dataList.getValueAt(i, 2).toString());
+                }
+                parameter.put("userauthen", usernameList);
+                parameter.put("passauthen", passwordList);
+                parameter.put("rolename", roleList);
+                Generate.GenerateFromTag("AnthenXML", parameter, true);
+            }
         } catch (Exception ex) {
             Logger.getLogger(SetupDB.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -361,22 +423,27 @@ public class Project extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_ProjectNameTxtActionPerformed
 
+    private void passQueryTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passQueryTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passQueryTxtActionPerformed
 
 
-    
-    
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable AuthenTable;
+    private javax.swing.ButtonGroup Authengroup;
+    private javax.swing.JRadioButton DBAuthenRadio;
     private javax.swing.JTextField DriverTxt;
     private javax.swing.JTextField PackageNameTxt;
     private javax.swing.JTextField PathProjectTxt;
     private javax.swing.JTextField ProjectNameTxt;
     private javax.swing.JTextField URLTxt;
+    private javax.swing.JRadioButton XMLAuthenRadio;
     private javax.swing.JTextField connectTxt;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
@@ -392,14 +459,12 @@ public class Project extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField passQueryTxt;
     private javax.swing.JTextField passTxt;
     private javax.swing.JButton setup;
     private javax.swing.JTextField userTxt;
     private javax.swing.JTextField userpassQueryTxt;
     // End of variables declaration//GEN-END:variables
-
 
     public JTextField getPackageNameTxt() {
         return PackageNameTxt;
@@ -464,7 +529,5 @@ public class Project extends javax.swing.JPanel {
     public void setUserTxt(JTextField userTxt) {
         this.userTxt = userTxt;
     }
-    
-    
 
 }

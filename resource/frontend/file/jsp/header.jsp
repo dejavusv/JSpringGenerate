@@ -7,10 +7,9 @@
                     ace.settings.check('navbar', 'fixed')
                 } catch (e) {
                 }
-            </script>
-			<c:set var="USER" value="${sessionScope['USER']}" />			
+            </script>		
             <!-- csrt for log out-->
-            <form action="/Template/j_spring_security_logout" method="post" id="logoutForm">
+            <form action="/<%projectname%>/j_spring_security_logout" method="post" id="logoutForm">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
             </form>
             <script>
@@ -52,7 +51,7 @@
                                 <img class="nav-user-photo" src="img/Koala.jpg" alt="user's Photo" />
                                 <span class="user-info">
                                     <small>Welcome,</small>
-                                    ${USER}
+                                    ${pageContext.request.userPrincipal.name}
                                 </span>
 
                                 <i class="ace-icon fa fa-caret-down"></i>

@@ -27,24 +27,25 @@ public class LoginController extends <%projectname%>Controller{
 
     @Override
     protected ModelAndView process(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-        ModelAndView authen = new ModelAndView("login");
         String error = request.getParameter("error");
-        
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName(); //get logged in username
 
-        session.setAttribute("USER", name);
-        if ((session.getAttribute("USER") != null) && (!session.getAttribute("USER").toString().equalsIgnoreCase("anonymousUser"))) {
+        if (name != null && (!name.equalsIgnoreCase("anonymousUser"))) {
+            session.setAttribute("USER", name);
             log.info("Login Successful with " + session.getAttribute("USER").toString());
             return INDEX;
-        } else {
-            request.setAttribute("ResultLogin", "Login fail!!");
-            log.info("Login fail!!");
-            return LOG_IN;
+        } else if(request.getAttribute("logout") != null && "out".equalsIgnoreCase(request.getAttribute("logout").toString())){
+            log.info("user log out ");   
         }
-
+        
+        if(error != null){
+            request.setAttribute("ResultLogin", "Login fail!!");
+            log.info("Login fail!!");   
+        }
+        return LOG_IN;
     }
-
+	
     public String getUserDetails() {
             
             Collection<? extends GrantedAuthority> authorities = SecurityContextHolder.getContext().getAuthentication().getAuthorities();

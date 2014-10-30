@@ -20,6 +20,14 @@ public class IndexController extends <%projectname%>Controller{
 
     @Override
     protected ModelAndView process(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+        if (session.getAttribute("USER") == null) {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            String name = auth.getName(); //get logged in username
+            if (name != null && (!name.equalsIgnoreCase("anonymousUser"))) {
+                session.setAttribute("USER", name);
+				log,info("username :"+name);
+            }
+        }
         return INDEX;
     }
 }

@@ -124,7 +124,7 @@
  <springSQL>
     SET src = resource/backend/file/springconfig/spring_sql.xml
     SET des = <%projectpath%>/web/WEB-INF/<%projectname%>-sql.xml
-    SET map = projectname
+    SET map = projectname,projectpath
     MAPPING    
  </springSQL>    
  
@@ -537,4 +537,20 @@
     SET map = packagename,projectname,url,pagename
     MAPPING       
 </AddController>
+
+<AnthenDB>
+	SET src = resource/backend/template/authen_manager_DB.template
+    SET des = <%projectpath%>/web/WEB-INF/<%projectname%>-security.xml
+	SET map = usernamequery,rolequery
+	SET tag = <!--<authen method>-->
+	ADDDATA
+</AnthenDB>   
+
+<AnthenXML>
+	SET src = resource/backend/template/beanid.template
+    SET des = <%projectpath%>/web/WEB-INF/<%projectname%>-security.xml
+	SET map = userauthen,passauthen,rolename
+	SET tag = <!--<authen method>-->
+	ADDDATA
+</AnthenXML>   
 

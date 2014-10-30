@@ -35,7 +35,7 @@
 
 											<div class="space-6"></div>
 
-											<form  method="post" name="formApplication" id="formApplication" method="post" action="<c:url value='/j_spring_security_check' />"">
+											<form  method="post" name="formApplication" id="formApplication" action="<c:url value='/j_spring_security_check' />">
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">

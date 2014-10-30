@@ -26,7 +26,7 @@ public class <%projectname%>SQL extends JdbcDaoSupport {
     private Document doc;
     private static final String TAG_QUERY = "query";
     private static final String TAG_ID = "id";
-    private static final String PATH_XML = "webapps/Manpower/WEB-INF/manpower_sql.xml";
+    private static final String PATH_XML = "<%projectpath%>/webapps/<%projectname%>/WEB-INF/<%projectname%>_sql.xml";
     private String TAG_NAME;
     private TransactionTemplate transactionTemplate;
     

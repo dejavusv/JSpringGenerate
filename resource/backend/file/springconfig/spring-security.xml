@@ -8,16 +8,16 @@
 	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
     <!-- enable use-expressions -->
-	<http auto-config="true" use-expressions="true">
+	<http auto-config="true">
  
-		<intercept-url pattern="/index.<%url%>"  access="permitAll" />
+		<intercept-url pattern="/index.<%url%>"  access="ROLE_USER" />
 
 		<!-- access denied page -->
 		<access-denied-handler error-page="/logout.<%url%>" />
  
 		<form-login 
 		    login-page="/login.<%url%>" 
-		    default-target-url="/login.<%url%>" 
+		    default-target-url="/index.<%url%>" 
                         authentication-failure-url="/login.<%url%>?error" 
 			username-parameter="username"
 			password-parameter="password" />
