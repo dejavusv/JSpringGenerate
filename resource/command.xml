@@ -228,7 +228,7 @@
 <ProjectSQL>  
     SET src = resource/backend/file/java/common/ProjectSQL.java
     SET des = <%projectpath%>/src/java/<%packagename%>/common/<%projectname%>SQL.java
-    SET map = packagename,projectname
+    SET map = packagename,projectname,projectpath
     MAPPING        
 </ProjectSQL> 
 	  
@@ -385,8 +385,8 @@
 
 <CreateAjaxPageServlet>
     SET src = resource/backend/file/java/servlet/ajax/TemplateServlet.java
-    SET des = <%projectpath%>/src/java/<%packagename%>/servlet/ajax/<%pagename%>Servlet.java
-    SET map = packagename,pagename
+    SET des = <%projectpath%>/src/java/<%packagename%>/servlet/ajax/<%servletname%>Servlet.java
+    SET map = packagename,servletname
     MAPPING       
 </CreateAjaxPageServlet> 
 
@@ -413,6 +413,14 @@
     MAPPING  
 </CreateAJAXBean>
 
+<InitTagAJAXBean>
+	SET src = resource/backend/template/AJAXBeanTag.template
+    SET des = <%projectpath%>/web/WEB-INF/<%projecyname%>-bean.xml
+	SET map = refname
+	SET tag = <!--<add data>-->
+	ADDDATA
+</InitTagAJAXBean>
+
 <AddTagBeanRef>
 	SET src = resource/backend/template/BeanRef.template
     SET des = <%projectpath%>/web/WEB-INF/<%projecyname%>-bean.xml
@@ -424,10 +432,11 @@
 <AddTagAJAXServlet>
 	SET src = resource/backend/template/AJAXServlet.template
     SET des = <%projectpath%>/web/WEB-INF/<%projecyname%>-bean.xml
-	SET map = pagename
-	SET tag = <!--<AJAX bean>-->
+	SET map = servletname,packagename
+	SET tag = <!--<add data>-->
 	ADDDATA 
 </AddTagAJAXServlet>
+
 
 <AddAjaxJS>
 	SET src = resource/frontend/template/AjaxJS.template

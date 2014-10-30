@@ -1,0 +1,9 @@
+    
+    <!-- Component Bean -->
+    <bean id="AJAXBean" class="<%pachagename%>.datalayer.bean.master.AJAXBean">
+        <constructor-arg>
+            <list>
+                <!--<RefBean>-->
+            </list>
+        </constructor-arg>
+    </bean>

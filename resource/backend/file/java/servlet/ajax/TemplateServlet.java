@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Surachai
  */
-public class <%pagename%>Servlet implements AbstractAJAXServlet {
+public class <%servletname%>Servlet implements AbstractAJAXServlet {
 
 	public Map process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String data   = request.getParameter("data");
@@ -23,7 +23,7 @@ public class <%pagename%>Servlet implements AbstractAJAXServlet {
 		Map result = new HashMap();
 		result.put("data",data);
 		result.put("servletName",servletName);
-                result.put("type",Type);
+        result.put("type",Type);
 		return result;
 	}
 }

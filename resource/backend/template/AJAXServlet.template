@@ -1,3 +1,3 @@
 	
-    <bean id="<%pagename%>Servlet"
-          class="<%packagename%>.servlet.<%pagename%>Servlet" />
+    <bean id="<%Servletname%>Servlet"
+          class="<%packagename%>.servlet.<%servletname%>Servlet" />
