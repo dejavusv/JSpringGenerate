@@ -25,6 +25,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import jscantag.Jscantag;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -42,6 +43,7 @@ public class SpringGenerator extends javax.swing.JFrame {
     private Map<String, Object> map;
     private ManageData DB;
     private GenerateFile g;
+    private Jscantag scan;
 
     /**
      * Creates new form SpringGenerator
@@ -59,7 +61,7 @@ public class SpringGenerator extends javax.swing.JFrame {
         initComponents();
 
         DB = new ManageData("DB");
-
+        scan = new Jscantag();
         try {
             DB.Create("project");
         } catch (IOException ex) {
@@ -279,15 +281,27 @@ public class SpringGenerator extends javax.swing.JFrame {
         Session sessionMap = Session.Getinstance();
         Map<String, Object> parameter = sessionMap.getMap();
         DefaultComboBoxModel model = new DefaultComboBoxModel();
+        DefaultComboBoxModel Templatemodel = new DefaultComboBoxModel();
         model.addElement("other");
         if (parameter.get("projectpath") != null) {
-            List<String> listfile = g.getListFilename(parameter.get("projectpath").toString() + "/datalayer/query");
-            if (listfile != null) {
-                for (int i = 0; i < listfile.size(); i++) {
+            //set ref name
+            List<String> listfile = scan.getListIDFromSpringBeans(parameter.get("projectpath").toString()+"/web/WEB-INF/"+parameter.get("projectname").toString()+"-query.xml");
+            if (listfile != null) {      
+                for(int i = 0; i < listfile.size(); i++) {
                     model.addElement(listfile.get(i));
                 }
-                if (listfile.size() != 0) {
-                    SpringPage.setAJaxOutputTypeList(model);
+                if(listfile.size() != 0) {
+                    SpringPage.setAJaxRefNameList(model);
+                }
+            }
+                  
+            List<String> listTemplate = scan.getListNameTemplateFromTile(parameter.get("projectpath").toString()+"/web/WEB-INF/tiles/tiles-definitions.xml");
+            if(listTemplate != null){
+                for(int i = 0; i < listTemplate.size(); i++) {
+                    Templatemodel.addElement(listTemplate.get(i));
+                }
+                if(listTemplate.size() != 0) {
+                    SpringPage.setAJaxExtendList(Templatemodel);
                 }
             }
 

@@ -634,13 +634,11 @@ public class JSpringQuery extends javax.swing.JPanel {
         } else {
             try {
                 j.GenerateFromTag("AddSpringBean", map, false);
-                /*
                 j.GenerateFromTag("AddSpringQuery", map, false);
                 j.GenerateFromTag("CreateBean", map, false);
                 j.GenerateFromTag("CreateQuery", map, false);
                 j.GenerateFromTag("CreateService", map, false);
                 j.GenerateFromTag("GenHeadQuery", map, false);
-                */
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

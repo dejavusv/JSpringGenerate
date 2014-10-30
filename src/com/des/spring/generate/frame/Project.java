@@ -375,45 +375,50 @@ public class Project extends javax.swing.JPanel {
         // TODO add your handling code here:
         Session sessionMap = Session.Getinstance();
         Map<String, Object> parameter = sessionMap.getMap();
+        int result = 0;
         try {
             if (!DBAuthenRadio.isSelected() && !XMLAuthenRadio.isSelected()) {
-                int result = JOptionPane.showConfirmDialog(this, "are you confirm to setup project without Authen method?"
-                        + "/n (if not set it.you cannot run project.)");
-                System.out.println("result :" + result);
+                result = JOptionPane.showConfirmDialog(this, "are you confirm to setup project without Authen method?"
+                        + "\n (if not set it.you cannot run project.)");
+
             }
+            if (result == 0) {
+                Generate.setupproject(parameter);
+                PackageNameTxt.setText(parameter.get("packagename").toString());
+                ProjectNameTxt.setText(parameter.get("projectname").toString());
+                URLTxt.setText(parameter.get("url").toString());
+                PathProjectTxt.setText(parameter.get("projectpath").toString());
+                userTxt.setText(parameter.get("username").toString());
+                DriverTxt.setText(parameter.get("driverName").toString());
+                passTxt.setText(parameter.get("password").toString());
+                connectTxt.setText(parameter.get("connectionString").toString());
 
-            Generate.setupproject(parameter);
-            PackageNameTxt.setText(parameter.get("packagename").toString());
-            ProjectNameTxt.setText(parameter.get("projectname").toString());
-            URLTxt.setText(parameter.get("url").toString());
-            PathProjectTxt.setText(parameter.get("projectpath").toString());
-            userTxt.setText(parameter.get("username").toString());
-            DriverTxt.setText(parameter.get("driverName").toString());
-            passTxt.setText(parameter.get("password").toString());
-            connectTxt.setText(parameter.get("connectionString").toString());
+                if (DBAuthenRadio.isSelected()) {
+                    parameter.put("usernamequery", userpassQueryTxt.getText());
+                    parameter.put("rolequery", passQueryTxt.getText());
+                    Generate.GenerateFromTag("AnthenDB", parameter, true);
+                } else if (XMLAuthenRadio.isSelected()) {
+                    // AuthenTable.get
+                    List<String> usernameList = new LinkedList<String>();
+                    List<String> passwordList = new LinkedList<String>();
+                    List<String> roleList = new LinkedList<String>();
+                    TableModel dataList = AuthenTable.getModel();
 
-            if (DBAuthenRadio.isSelected()) {
-                parameter.put("usernamequery", userpassQueryTxt.getText());
-                parameter.put("rolequery", passQueryTxt.getText());
-                Generate.GenerateFromTag("AnthenDB", parameter, true);
-            } else if (XMLAuthenRadio.isSelected()) {
-                // AuthenTable.get
-                List<String> usernameList = new LinkedList<String>();
-                List<String> passwordList = new LinkedList<String>();
-                List<String> roleList = new LinkedList<String>();
-                TableModel dataList = AuthenTable.getModel();
-                
-                for (int i = 0; i < dataList.getRowCount(); i++) {  
-                    if(dataList.getValueAt(i, 0) == null)break;
-                    usernameList.add(dataList.getValueAt(i, 0).toString());
-                    passwordList.add(dataList.getValueAt(i, 1).toString());
-                    roleList.add(dataList.getValueAt(i, 2).toString());
+                    for (int i = 0; i < dataList.getRowCount(); i++) {
+                        if (dataList.getValueAt(i, 0) == null) {
+                            break;
+                        }
+                        usernameList.add(dataList.getValueAt(i, 0).toString());
+                        passwordList.add(dataList.getValueAt(i, 1).toString());
+                        roleList.add(dataList.getValueAt(i, 2).toString());
+                    }
+                    parameter.put("userauthen", usernameList);
+                    parameter.put("passauthen", passwordList);
+                    parameter.put("rolename", roleList);
+                    Generate.GenerateFromTag("AnthenXML", parameter, true);
                 }
-                parameter.put("userauthen", usernameList);
-                parameter.put("passauthen", passwordList);
-                parameter.put("rolename", roleList);
-                Generate.GenerateFromTag("AnthenXML", parameter, true);
             }
+
         } catch (Exception ex) {
             Logger.getLogger(SetupDB.class.getName()).log(Level.SEVERE, null, ex);
         }

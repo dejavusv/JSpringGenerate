@@ -272,7 +272,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="initBut" min="-2" pref="59" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jButton1" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="AddAJaxBut" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -331,7 +331,7 @@
                       </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <Component id="AddAJaxBut" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -447,10 +447,13 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="AddAJaxBut">
           <Properties>
             <Property name="text" type="java.lang.String" value="Add Ajax"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddAJaxButActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

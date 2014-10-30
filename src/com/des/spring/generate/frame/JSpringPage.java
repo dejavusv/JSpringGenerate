@@ -32,21 +32,31 @@ public class JSpringPage extends javax.swing.JPanel {
         Map<String, Object> map = session.getMap();
         j = new JSpringGenerate();
         g = new GenerateFile();
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
-        model.addElement("baseLayout");
-        model.addElement("loginLayout");
-        extendList.setModel(model);
+       // DefaultComboBoxModel model = new DefaultComboBoxModel();
+      //  model.addElement("baseLayout");
+      //  model.addElement("loginLayout");
+      //  extendList.setModel(model);
         DefaultComboBoxModel Outputmodel = new DefaultComboBoxModel();
         Outputmodel.addElement("reload");
         Outputmodel.addElement("text");
         Outputmodel.addElement("select");
-
+        AJaxOutputTypeList.setModel(Outputmodel);
 
     }
     
     public void setAJaxOutputTypeList(DefaultComboBoxModel model){
         AJaxOutputTypeList.setModel(model);
     }
+    
+    public void setAJaxRefNameList(DefaultComboBoxModel model){
+        RefNameList.setModel(model);
+    }
+    
+    public void setAJaxExtendList(DefaultComboBoxModel model){
+        extendList.setModel(model);
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,7 +95,7 @@ public class JSpringPage extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         RefNameList = new javax.swing.JComboBox();
         RefNameTxt = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        AddAJaxBut = new javax.swing.JButton();
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 255), null), "Setup New page"));
 
@@ -239,7 +249,12 @@ public class JSpringPage extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Add Ajax");
+        AddAJaxBut.setText("Add Ajax");
+        AddAJaxBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddAJaxButActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -267,7 +282,7 @@ public class JSpringPage extends javax.swing.JPanel {
                                 .addComponent(jLabel8)
                                 .addGap(18, 18, 18)
                                 .addComponent(initBut, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(AddAJaxBut, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
@@ -310,7 +325,7 @@ public class JSpringPage extends javax.swing.JPanel {
                         .addComponent(jLabel9)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(AddAJaxBut)
                 .addGap(9, 9, 9))
         );
 
@@ -421,10 +436,15 @@ public class JSpringPage extends javax.swing.JPanel {
 
     }//GEN-LAST:event_initButActionPerformed
 
+    private void AddAJaxButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddAJaxButActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AddAJaxButActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox AJaxOutputTypeList;
     private javax.swing.JTextField AJaxServletTxt;
+    private javax.swing.JButton AddAJaxBut;
     private javax.swing.JButton Addpage;
     private javax.swing.JTable AttributeTable;
     private javax.swing.JTextField JSNameTxt;
@@ -434,7 +454,6 @@ public class JSpringPage extends javax.swing.JPanel {
     private javax.swing.JTextField TemplateNameTxt;
     private javax.swing.JComboBox extendList;
     private javax.swing.JButton initBut;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
