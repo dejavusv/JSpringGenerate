@@ -552,11 +552,11 @@ public class JSpringQuery extends javax.swing.JPanel {
             setDefaultFunctionGen("DELETE_TAG", "DELETE", "Delete", 5);
         } else if (selectValue.equalsIgnoreCase(OTHER)) {
             // set title name
-            TitleSelect.setText(" ");
+            TitleSelect.setText("parameter");
             TitleCon.setText(" ");
             // set list enable
             SelectFieldList.setEnabled(true);
-            conditionList.setEnabled(true);
+            conditionList.setEnabled(false);
             setDefaultFunctionGen("", "", "", 0);
         } else if (selectValue.equalsIgnoreCase(DEFAULT_OPERATION)) {
             // set title name
